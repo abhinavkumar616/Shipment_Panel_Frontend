@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title> Agatsa Administration</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
+    <meta content="MyraStudio" name="author" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="assets/images/favicon (1).ico">
+
+    <!-- Plugins css -->
+    <!-- <link href="../plugins/datatables/dataTables.bootstrap4.css" rel="stylesheet" type="text/css" />
+    <link href="../plugins/datatables/responsive.bootstrap4.css" rel="stylesheet" type="text/css" />
+    <link href="../plugins/datatables/buttons.bootstrap4.css" rel="stylesheet" type="text/css" />
+    <link href="../plugins/datatables/select.bootstrap4.css" rel="stylesheet" type="text/css" /> -->
+
+    <!-- App css -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/theme.min.css" rel="stylesheet" type="text/css" />
+
+    
+</head>
+
+    <body>
+ 
+        <div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="d-flex align-items-center min-vh-100">
+                            <div class="w-100 d-block bg-white shadow-lg rounded my-5">
+                                <div class="row">
+                                    <div class="col-lg-5 d-none d-lg-block bg-login rounded-left"></div>
+                                    <div class="col-lg-7">  
+                                        <div class="p-5">
+                                            <div class="text-center mb-5">
+                                                <a href="index.html" class="text-dark font-size-22 font-family-secondary">
+                                                    <img src="./assets/images/Agatsa Logo-01 1.png" width="200" height="66" alt="Agatsa login"> <b class="align-middle"></b> <b class="align-middle"></b>
+                                                </a>
+                                            </div>
+                                            <h1 class="h5 mb-1">Welcome to Agatsa</h1>
+                                            <p class="text-muted mb-4">Enter your email address and password to access agatsa shipment panel.</p>
+                                            <form class="user" id="loginForm">
+                                                <div class="form-group">
+                                                    <input type="email" class="form-control form-control-user" id="username" placeholder="username" >
+                                                </div>
+                                                <div class="form-group">
+                                                    <input type="password" class="form-control form-control-user" id="password" placeholder="Password" >
+                                                </div>
+                                                <a href="#"  type="submit" class="btn btn-success btn-block waves-effect waves-light"  onclick="getInfo()"> Log In </a>
+    
+                                                
+                                                
+                                            </form>
+    
+                                          
+                                            <!-- end row -->
+                                        </div> <!-- end .padding-5 -->
+                                    </div> <!-- end col -->
+                                </div> <!-- end row -->
+                            </div> <!-- end .w-100 -->
+                        </div> <!-- end .d-flex -->
+                    </div> <!-- end col-->
+                </div> <!-- end row -->
+            </div>
+            <!-- end container -->
+        </div>
+        <!-- end page -->
+    
+        <!-- jQuery  -->
+        <script src="assets/js/jquery.min.js"></script>
+        <script src="assets/js/bootstrap.bundle.min.js"></script>
+        <script src="assets/js/metismenu.min.js"></script>
+        <script src="assets/js/waves.js"></script>
+        <script src="assets/js/simplebar.min.js"></script>
+    
+        <!-- App js -->
+        <script src="assets/js/theme.js"></script>
+
+        <!-- Login API -->
+        <script>
+
+      async      function getInfo(){
+                var username = document.getElementById("username").value;
+              var password = document.getElementById("password").value;
+            //   console.log("username", username);
+
+            //   console.log("password", password);
+
+              ////
+        //       const username1 = 'admin';
+        //     const password1 = 'admin';
+
+        //     const headers = new Headers();
+
+        //     headers.append('Authorization', 'Basic ' + btoa(username1 + ':' + password1));
+
+        //     const requestOptions = {
+        //   method: 'POST',
+        //   headers: headers,
+        
+        
+        //         // body: JSON.stringify({ username: username, password: password })
+            
+        //     }
+
+            // const response = await fetch('http://localhost:1000/login'); // Replace with your API endpoint
+            // let data = await response.json();
+            // console.log("data", data);
+
+            fetch("http://35.231.83.234:3003/login", {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ username: username, password: password })
+              })
+              .then(function(response) {
+                // console.log("responsewwww: ", response);
+                if (!response.ok) {
+                  throw new Error("Login failed."); // Throw an error for failed login
+                }
+                // console.log("kkkkkkkk");
+                return response.json(); // Parse response as JSON
+              })
+              .then(function(data) {
+                
+                // console.log("data", data);
+                // return
+                if(data.status != 200){
+                    // return res.send({message: "In"})
+                    // console.log("yyyy");
+                    alert(data.message)
+                    return 
+                    // console.log("sucesss ", data.message);
+                }else{
+                    localStorage.setItem("token", data.token)
+                    alert(data.message)
+                    var token = data; // Assuming the API returns a token
+
+
+                    // Do something with the token (e.g., store it in local storage, redirect to another page)
+                // console.log("Login successful. Token: " + data);
+                document.location.href = "index.html"
+
+                }
+               
+                
+              })
+              .catch(function(error) {
+                alert("Login failed: " + error.message);
+              });
+            // });
+
+            }
+
+
+           
+          </script>
+          
+          
+    
+    </body>
+    
+    </html>

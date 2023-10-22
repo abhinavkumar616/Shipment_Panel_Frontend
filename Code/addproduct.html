@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Product Form</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="parentclass container-fluid"  >
+        <div class="container">
+            <h1>Add a Product</h1>
+            <form id="productForm" method="post" action="/">
+                <div class="form-group">
+                    <label for="OrderNo">OrderNo</label>
+                    <input type="text" id="orderno" name="orderno" required >
+                </div>
+                <div class="form-group">
+                    <label for="CreatedBy">Created By</label>
+                    <input type="text" id="name" name="name" required >
+                </div>
+                <div class="form-group">
+                    <label for="productPrice">Customer Name:</label>
+                    <input type="text" id="customername" name="customername" required >
+                </div>
+                <div class="form-group">
+                    <label for="productImage">Contact No</label>
+                    <input type="number" id="contactno" name="contactno" required >
+                </div>
+                <div class="form-group">
+                    <label for="NoOfDevice">No of Device</label>
+                    <input type="number" id="noofdevice" name="noofdevice" required >
+                </div>
+                <div class="form-group">
+                    <label for="BatchNo">Batch No</label>
+                    <input type="text" id="batchno" name="batchno" required >
+                </div>
+                <div class ="form-group">
+                    <label for="PaperId">Paper Id</label>
+                    <input type="text" id="paperid" name="paperid" required >
+                </div>
+                <div class="form-group">
+                    <label for="Courier">Courier</label>
+                    <input type="text" id="courier" name="courier" required >
+                </div>
+                <div class="form-group">
+                    <label for="Replacement">Replacement</label>
+                    <input type="text" id="replacement" name="replacement" required >
+                </div>
+                <div class="form-group">
+                    <label for="DeviceType">Device Type</label>
+                    <input type="text" id="devicetype" name="devicetype" required >
+                </div>
+                <div class="form-group">
+                    <label for="Repair">Repair</label>
+                    <input type="text" id="repair" name="repair" required >
+                </div>
+                <div class="form-group">
+                    <label for="EcgCount">Ecg Count</label>
+                    <input type="number" id="ecgcount" name="ecgcount" required >
+                </div>
+                <!-- <div class="form-group" style="text-align: center; " >
+                    <label for="ShipmentDate">Shipment Date</label>
+                    <input type="date" style="font-size: 17px;"  id="shipmentdate" name="shipmentdate" placeholder="dd-mm-yyyy" >
+                </div> -->
+                <div class="form-group" style="text-align: center;">
+                    <label for="ShipmentDate">Shipment Date</label>
+                    <input type="date" style="font-size: 17px;" id="shipmentdate" name="shipmentdate" required >
+                </div>
+                
+                <script>
+                    // Get the current date in the format YYYY-MM-DD
+                    const currentDate = new Date().toISOString().split('T')[0];
+                    
+                    // Set the current date as the default value for the input
+                    document.getElementById('shipmentdate').value = currentDate;
+                </script>
+            
+            <button  type="submit" target="_blank" class="btn" id="addProductButton">Add Product</button>
+    
+            </form>
+        </div>
+    </div>
+    <script src="script.js"></script>
+
+    <script>
+        var token = localStorage.getItem('token');
+        if (!token) {
+            // Redirect the user to the login page or any other appropriate page
+            window.location.href = 'auth-login.html';
+        } else {
+            // Check if the token has already been verified
+            var isTokenVerified = localStorage.getItem('token');
+    
+            if (!isTokenVerified) {
+                $.ajax({
+                    url: 'http://35.231.83.234:3003/login', // Replace with your server's API endpoint for token verification
+                    type: 'POST',
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    // headers: {
+                    //     'Authorization': 'Bearer ' + token
+                    // },
+                    success: function (response) {
+                        localStorage.setItem('isTokenVerified', true);
+                    },
+                    error: function (error) {
+                        window.location.href = 'auth-login.html';
+                    }
+                });
+            }
+        }
+    </script>
+    
+
+</body>
+</html>
+
+
+

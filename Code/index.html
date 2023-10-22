@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title> Agatsa Administration</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
+    <meta content="MyraStudio" name="author" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="assets/images/favicon (1).ico">
+
+    <!-- Plugins css -->
+    <!-- <link href="../plugins/datatables/dataTables.bootstrap4.css" rel="stylesheet" type="text/css" />
+    <link href="../plugins/datatables/responsive.bootstrap4.css" rel="stylesheet" type="text/css" />
+    <link href="../plugins/datatables/buttons.bootstrap4.css" rel="stylesheet" type="text/css" />
+    <link href="../plugins/datatables/select.bootstrap4.css" rel="stylesheet" type="text/css" /> -->
+
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.4/css/dataTables.bootstrap4.min.css">
+
+
+    <!-- App css -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/theme.min.css" rel="stylesheet" type="text/css" />
+
+
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <!-- <link href="plugins/datatables/select.bootstrap4.css" rel="stylesheet" type="text/css" /> -->
+
+
+    <!-- Use CDN link for DataTables CSS -->
+    <!-- <link rel="stylesheet" href="https://cdn.datatables.net/1.11.4/css/dataTables.bootstrap4.min.css"> -->
+
+
+    <!-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css"> -->
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
+
+    <!-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css"> -->
+
+    <style>
+        .custom-table th,
+        .custom-table td {
+            padding: 10px;
+            /* Adjust the padding to control column spacing */
+            min-width: 200px;
+            max-width: 200px;
+        }
+
+
+        .eye-button {
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+        }
+
+        .eye-button i {
+            color: darkcyan;
+            font-size: 18px;
+        }
+
+        
+
+        .loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        .loader .spinner {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #3498db;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .pagination {
+            display: flex;
+            list-style: none;
+            margin: 20px 0;
+            padding: 0;
+            justify-content: center;
+        }
+
+        .pagination li {
+            margin: 0 5px;
+            padding: 5px 10px;
+            background-color: #f2f2f2;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .pagination li.active {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        .pagination li:hover {
+            background-color: #007bff;
+            color: #fff;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="loader-container">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Begin page -->
+    <div id="layout-wrapper">
+        <div class="header-border"></div>
+        <header id="page-topbar">
+            <div class="navbar-header">
+
+                <div class="d-flex align-items-left">
+                    <button type="button" class="btn btn-sm mr-2 d-lg-none px-3 font-size-16 header-item waves-effect"
+                        id="vertical-menu-btn">
+                        <i class="fa fa-fw fa-bars"></i>
+                    </button>
+
+                    <div class="dropdown d-none d-sm-inline-block">
+
+                    </div>
+                </div>
+
+                <div class="d-flex align-items-center">
+
+
+                    <div class="dropdown d-inline-block">
+
+                        <div class="dropdown-menu dropdown-menu-right">
+
+                            <!-- item-->
+
+
+                            <!-- item-->
+
+
+                            <!-- item-->
+
+                            <!-- item-->
+
+                        </div>
+                    </div>
+
+
+
+
+
+                </div>
+            </div>
+        </header>
+
+        <!-- ========== Left Sidebar Start ========== -->
+        <div class="vertical-menu">
+
+            <div data-simplebar class="h-100">
+
+                <div class="navbar-brand-box">
+                    <a href="index.html" class="logo">
+                        <img src="./assets/images/Agatsa Logo-01 1.png" width="200" height="66" alt="Agatsa login"> <b
+                            class="align-middle"></b> <b class="align-middle"></b>
+                    </a>
+                </div>
+
+                <!--- Sidemenu -->
+                <div id="sidebar-menu">
+                    <!-- Left Menu Start -->
+                    <ul class="metismenu list-unstyled" id="side-menu">
+                        <li class="menu-title">Menu</li>
+
+                        <li>
+                            <a href="index.html" class="waves-effect"><i class="mdi mdi-home-analytics"></i><span
+                                    class="badge badge-pill badge-primary float-right"></span><span>Dashboard</span></a>
+                        </li>
+                        <!-- <li>
+                            <a href="project.html" class="waves-effect"><i class="mdi mdi-home-analytics"></i><span
+                                    class="badge badge-pill badge-primary float-right"></span><span>ProjectDetails</span></a>
+                        </li> -->
+                        <li><a href="#" class=" waves-effect" onclick="logout()"><i
+                                    class="mdi mdi-calendar-range-outline"></i><span>Logout</span></a></li>
+
+
+                    </ul>
+                </div>
+                <!-- Sidebar -->
+            </div>
+        </div>
+        <!-- Left Sidebar End -->
+
+        <!-- ============================================================== -->
+        <!-- Start right Content here -->
+        <!-- ============================================================== -->
+        <div class="main-content">
+
+            <div class="page-content">
+                <div class="container-fluid">
+
+                    <!-- start page title -->
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="page-title-box d-flex align-items-center justify-content-between">
+                                <h4 class="mb-0 font-size-18">Shipment Data</h4>
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end page title -->
+
+                    <!-- end row-->
+
+
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-body">
+
+                                    <h4 class="card-title">Shipment List</h4>
+                                    <div id="dt-example" class=" flex-nowrap overflow-auto"></div>
+                                    <div class="container">
+                                        <div class="table-responsive">
+                                            <table class="table table-striped table-bordered">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Order No</th>
+                                                        <th>Created By</th>
+                                                        <th>Customer Name</th>
+                                                        <th>Contact No</th>
+                                                        <th>No of Device</th>
+                                                        <th>Batch No</th>
+                                                        <th>Paper Id</th>
+                                                        <th>Courier</th>
+                                                        <th>Replacement</th>
+                                                        <th>Device Type</th>
+                                                        <th>Repair</th>
+                                                        <th>Ecg Count</th>
+                                                        <th>Shipment Date</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="content">
+                                                    <!-- Content to be paginated -->
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+
+                                    <div id="content">
+                                        <!-- Content to be paginated -->
+                                    </div>
+                                    <ul class="pagination"></ul>
+
+                                    <script>
+                                        const itemsPerPage = 10; // Number of items per page
+                                        let currentPage = 1;
+                                        let data = []; // To store API data
+
+                                        function showLoader() {
+                                            const loaderContainer = document.querySelector('.loader-container');
+                                            loaderContainer.style.display = 'flex';
+                                        }
+
+                                        // Function to hide the loader
+                                        function hideLoader() {
+                                            const loaderContainer = document.querySelector('.loader-container');
+                                            loaderContainer.style.display = 'none';
+                                        }
+
+
+                                        // Function to make an API request and fetch data
+                                        async function fetchData() {
+                                            showLoader(); 
+
+                                            const apiUrl = 'http://35.231.83.234:3040/getProduct';
+                                            try {
+                                                const response = await fetch(apiUrl);
+                                                const result = await response.json();
+                                                data = result.data;
+                                                // console.log("data",data);
+                                                createTable(); // Call function to create the table
+                                                displayItems();
+                                                createPaginationButtons();
+                                                hideLoader();
+                                            } catch (error) {
+                                                console.error('Error fetching data:', error);
+                                                hideLoader();
+                                            }
+                                        }
+
+                                        // Function to create the table
+                                        function createTable() {
+                                            const content = document.getElementById('content');
+                                            content.innerHTML = '';
+
+                                            const table = document.createElement('table');
+                                            table.className = 'table table-striped custom-table';
+
+                                            const thead = document.createElement('thead');
+                                            const tbody = document.createElement('tbody');
+
+                                            // Create table header
+                                            const headerRow = document.createElement('tr');
+                                            headerRow.innerHTML = `
+                                                <th>Order No</th>
+                                                <th>Created By</th>
+                                                <th>Customer Name</th>
+                                                <th>Contact No</th>
+                                                <th>No of Device</th>
+                                                <th>Batch No</th>
+                                                <th>Paper Id</th>
+                                                <th>Courier</th>
+                                                <th>Replacement</th>
+                                                <th>Device Type</th>
+                                                <th>Repair</th>
+                                                <th>Ecg Count</th>
+                                                <th>Shipment Date</th>
+                                            `;
+
+                                            thead.appendChild(headerRow);
+                                            table.appendChild(thead);
+                                            table.appendChild(tbody);
+                                            content.appendChild(table);
+                                        }
+
+                                        // Function to display items for the current page
+                                        function displayItems() {
+                                            const tbody = document.querySelector('tbody');
+                                            tbody.innerHTML = '';
+
+                                            const startIndex = (currentPage - 1) * itemsPerPage;
+                                            const endIndex = startIndex + itemsPerPage;
+
+                                            for (let i = startIndex; i < endIndex && i < data.length; i++) {
+                                                const item = data[i];
+                                                const row = document.createElement('tr');
+                                                row.innerHTML = `
+                                                    <td>${item.orderno || "-"}</td>
+                                                    <td>${item.name || "-"}</td>
+                                                    <td>${item.customername || "-"}</td>
+                                                    <td>${item.contactno || "-"}</td>
+                                                    <td>${item.noofdevice || "-"}</td>
+                                                    <td>${item.batchno || "-"}</td>
+                                                    <td>${item.paperid || "-"}</td>
+                                                    <td>${item.courier || "-"}</td>
+                                                    <td>${item.replacement || "-"}</td>
+                                                    <td>${item.devicetype || "-"}</td>
+                                                    <td>${item.repair || "-"}</td>
+                                                    <td>${item.ecgcount || "-"}</td>
+                                                    <td>${item.shipmentdate || "-"}</td>
+                                                `;
+                                                tbody.appendChild(row);
+                                            }
+                                        }
+
+                                        // Function to create pagination buttons
+                                        function createPaginationButtons() {
+                                            const pagination = document.querySelector('.pagination');
+                                            pagination.innerHTML = '';
+
+                                            const totalPages = Math.ceil(data.length / itemsPerPage);
+                                            const maxPagesToShow = 5; // Number of pages to show at a time
+                                            const halfMaxPagesToShow = Math.floor(maxPagesToShow / 2);
+
+                                            let startPage = currentPage - halfMaxPagesToShow;
+                                            startPage = Math.max(1, startPage);
+                                            const endPage = Math.min(totalPages, startPage + maxPagesToShow - 1);
+
+                                            // Add previous button
+                                            const prevButton = document.createElement('li');
+                                            prevButton.textContent = 'Previous';
+                                            prevButton.addEventListener('click', () => {
+                                                if (currentPage > 1) {
+                                                    currentPage--;
+                                                    displayItems();
+                                                    createPaginationButtons();
+                                                }
+                                            });
+                                            pagination.appendChild(prevButton);
+
+                                            // Create page buttons
+                                            for (let page = startPage; page <= endPage; page++) {
+                                                const li = document.createElement('li');
+                                                li.textContent = page;
+                                                li.addEventListener('click', () => {
+                                                    currentPage = page;
+                                                    displayItems();
+                                                    createPaginationButtons();
+                                                });
+
+                                                if (page === currentPage) {
+                                                    li.classList.add('active');
+                                                }
+
+                                                pagination.appendChild(li);
+                                            }
+
+                                            // Add next button
+                                            const nextButton = document.createElement('li');
+                                            nextButton.textContent = 'Next';
+                                            nextButton.addEventListener('click', () => {
+                                                if (currentPage < totalPages) {
+                                                    currentPage++;
+                                                    displayItems();
+                                                    createPaginationButtons();
+                                                }
+                                            });
+                                            pagination.appendChild(nextButton);
+                                        }
+
+                                        fetchData();
+                                    </script>
+
+                                </div> <!-- end card body-->
+                            </div> <!-- end card -->
+
+                            <!-- <button type="button" class="btn btn-primary waves-effect waves-light" data-toggle="modal" data-target="#exampleModalCenter">
+                                Add Product
+                            </button> -->
+                            <a href="addproduct.html">
+                                <button type="button" class="btn btn-primary waves-effect waves-light"
+                                    data-toggle="modal" data-target="#exampleModalCenter">
+                                    Add Product
+                                </button>
+                            </a>
+
+                        </div><!-- end col-->
+                    </div>
+                </div>
+                <!-- end row-->
+
+
+                <!-- end row-->
+
+
+
+                <!-- end row-->
+
+
+                <div class="row">
+                    <!-- end col-->
+                </div>
+                <!-- end row-->
+
+
+                <!-- end row-->
+
+
+            </div> <!-- container-fluid -->
+        </div>
+        <!-- End Page-content -->
+
+        <footer class="footer">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-6">
+                        2023 © Agatsa.
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="text-sm-right d-none d-sm-block">
+                            Design & Develop by Agatsa
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+    <!-- end main content-->
+
+    </div>
+    <!-- END layout-wrapper -->
+
+    <!-- Overlay-->
+    <div class="menu-overlay"></div>
+
+    <!-- Logout js -->
+
+    <!-- </script> -->
+    <script>
+        async function logout() {
+
+            var confirmation = confirm("Are you sure you want to logout?");
+            if (confirmation) {
+                localStorage.removeItem('token');
+                window.location.href = 'auth-login.html';
+            } else {
+            }
+        }
+    </script>
+
+
+    <script>
+        var token = localStorage.getItem('token');
+        if (!token) {
+            // Redirect the user to the login page or any other appropriate page
+            window.location.href = 'auth-login.html';
+        } else {
+            // Check if the token has already been verified
+            var isTokenVerified = localStorage.getItem('token');
+
+            if (!isTokenVerified) {
+                $.ajax({
+                    url: 'http://35.231.83.234:3003/login', // Replace with your server's API endpoint for token verification
+                    type: 'POST',
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    // headers: {
+                    //     'Authorization': 'Bearer ' + token
+                    // },
+                    success: function (response) {
+                        localStorage.setItem('isTokenVerified', true);
+                    },
+                    error: function (error) {
+                        window.location.href = 'auth-login.html';
+                    }
+                });
+            }
+        }
+    </script>
+
+
+    <!-- jQuery  -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/metismenu.min.js"></script>
+    <script src="assets/js/waves.js"></script>
+    <script src="assets/js/simplebar.min.js"></script>
+
+    <!-- third party js -->
+    <!-- <script src="../plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="../plugins/datatables/dataTables.bootstrap4.js"></script>
+    <script src="../plugins/datatables/dataTables.responsive.min.js"></script>
+    <script src="../plugins/datatables/responsive.bootstrap4.min.js"></script>
+    <script src="../plugins/datatables/dataTables.buttons.min.js"></script>
+    <script src="../plugins/datatables/buttons.bootstrap4.min.js"></script>
+    <script src="../plugins/datatables/buttons.html5.min.js"></script>
+    <script src="../plugins/datatables/buttons.flash.min.js"></script>
+    <script src="../plugins/datatables/buttons.print.min.js"></script>
+    <script src="../plugins/datatables/dataTables.keyTable.min.js"></script>
+    <script src="../plugins/datatables/dataTables.select.min.js"></script>
+    <script src="../plugins/datatables/pdfmake.min.js"></script>
+    <script src="../plugins/datatables/vfs_fonts.js"></script> -->
+    <!-- third party js ends -->
+
+    <!-- Datatables init -->
+    <script src="assets/pages/datatables-demo.js"></script>
+
+    <!-- App js -->
+    <script src="assets/js/theme.js"></script>
+    <script src="assets/js/index.js"></script>
+
+    <!-- extra CDN added from ............. -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap4.min.js"></script>
+
+
+    <script src="https://cdn.datatables.net/buttons/1.7.1/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.bootstrap4.min.js"></script>
+
+
+    <script type="text/javascript" charset="utf8"
+        src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- DataTables JavaScript -->
+    <script type="text/javascript" charset="utf8"
+        src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+
+    <!-- <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
+    <!-- <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script> -->
+
+</body>
+
+</html>
